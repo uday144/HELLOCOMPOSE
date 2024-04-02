@@ -5,11 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
@@ -36,12 +40,19 @@ fun helloCompose(name: String = "Compose") {
     Text(text = "Hello $name")
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(widthDp = 150, heightDp = 50)
 @Composable
 fun previewCompose() {
-    Image(
-        painter = painterResource(id = R.drawable.heart), contentDescription = "Dummy image",
-        colorFilter = ColorFilter.tint(Color.Blue),
-        contentScale = ContentScale.Crop
-    )
+    Button(
+        onClick = { }, colors = ButtonDefaults.buttonColors(
+            contentColor = Color.White
+        ),
+        enabled = false
+    ) {
+        Text(text = "Click me")
+        Image(
+            painter = painterResource(id = R.drawable.arrow), contentDescription = "arrow button",
+            Modifier.rotate(180F)
+        )
+    }
 }
