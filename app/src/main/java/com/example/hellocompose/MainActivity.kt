@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -17,6 +19,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
@@ -40,15 +43,14 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Preview(widthDp = 300, heightDp = 500)
 @Composable
 fun previewCompose() {
-    TextField(
-        value = "Hello Compose", onValueChange = {},
-        label = { Text(text = "Enter massage") },
-        placeholder = {}
-    )
+   Column(verticalArrangement = Arrangement.SpaceEvenly,
+       horizontalAlignment = Alignment.CenterHorizontally) {
+       Text(text = "A",  fontSize = 24.sp)
+       Text(text = "B",  fontSize = 24.sp)
+   }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
