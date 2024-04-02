@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -46,11 +47,13 @@ class MainActivity : ComponentActivity() {
 @Preview(widthDp = 300, heightDp = 500)
 @Composable
 fun previewCompose() {
-   Column(verticalArrangement = Arrangement.SpaceEvenly,
-       horizontalAlignment = Alignment.CenterHorizontally) {
-       Text(text = "A",  fontSize = 24.sp)
-       Text(text = "B",  fontSize = 24.sp)
-   }
+    Row(
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(text = "A", fontSize = 24.sp)
+        Text(text = "B", fontSize = 24.sp)
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
