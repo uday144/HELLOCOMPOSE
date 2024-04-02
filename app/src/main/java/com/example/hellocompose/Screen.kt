@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -23,12 +25,19 @@ import androidx.compose.ui.unit.dp
 
 @Preview(heightDp = 500)
 @Composable
-fun PreviewItem(){
-   Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-       getCategoryList().map {item ->
-           BlogCategory(item.img, item.title, item.subtitle)
-       }
-   }
+fun PreviewItem() {
+
+    LazyColumn(content = {
+         items ( getCategoryList()){ item ->
+             BlogCategory(item.img, item.title, item.subtitle)
+         }
+    } )
+
+/*    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+        getCategoryList().map { item ->
+            BlogCategory(item.img, item.title, item.subtitle)
+        }
+    }*/
 }
 
 @Composable
@@ -40,13 +49,17 @@ fun BlogCategory(img: Int, title: String, subtitle: String) {
         ),
         modifier = Modifier.padding(8.dp)
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(8.dp)) {
-            Image(painter = painterResource(id = img), contentDescription = "",
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(8.dp)
+        ) {
+            Image(
+                painter = painterResource(id = img), contentDescription = "",
                 modifier = Modifier
                     .size(48.dp)
                     .padding(8.dp)
-                    .weight(.2f))
+                    .weight(.2f)
+            )
             ItemDescription(title, subtitle, Modifier.Companion.weight(.8f))
         }
 
@@ -70,8 +83,8 @@ private fun ItemDescription(title: String, subtitle: String, modifier: Modifier)
 
 data class Category(val img: Int, val title: String, val subtitle: String)
 
-fun getCategoryList(): MutableList<Category>{
-    val list  = mutableListOf<Category>()
+fun getCategoryList(): MutableList<Category> {
+    val list = mutableListOf<Category>()
     list.add(Category(R.drawable.bperson, "Programming 1", "Learn different languages"))
     list.add(Category(R.drawable.bperson, "Programming 2", "Learn different languages"))
     list.add(Category(R.drawable.bperson, "Programming 3", "Learn different languages"))
