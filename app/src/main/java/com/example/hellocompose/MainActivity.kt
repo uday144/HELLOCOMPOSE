@@ -6,9 +6,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
@@ -31,6 +34,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.hellocompose.ui.theme.HelloComposeTheme
 
@@ -38,7 +42,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            textInput()
+            Text(text = "Hello compose")
         }
     }
 }
@@ -47,25 +51,27 @@ class MainActivity : ComponentActivity() {
 @Preview(widthDp = 300, heightDp = 500)
 @Composable
 fun previewCompose() {
-    Row(
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(text = "A", fontSize = 24.sp)
-        Text(text = "B", fontSize = 24.sp)
+    Column {
+        listViewItem(R.drawable.bperson, "Uday Singh", "Software Engineer")
+        listViewItem(R.drawable.bperson, "Ramakant", "Quality Engineer")
+        listViewItem(R.drawable.bperson, "James Bont", "Software Engineer")
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun textInput() {
-    val state = remember { mutableStateOf("") }
-    TextField(
-        value = state.value,
-        onValueChange = {
-            state.value = it
-        },
-        label = { Text(text = "Enter massage") },
-        placeholder = {}
-    )
+fun listViewItem(imageId: Int, name: String, occupation: String) {
+
+    Row(Modifier.padding(10.dp)) {
+        Image(
+            painter = painterResource(id = imageId), contentDescription = "",
+            Modifier.size(40.dp)
+        )
+        Column {
+            Text(text = name, fontWeight = FontWeight.Bold)
+            Text(text = occupation, fontWeight = FontWeight.Thin, fontSize = 12.sp)
+        }
+
+    }
+
 }
+
