@@ -21,8 +21,14 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+
 @Composable
 fun helloCompose(name: String = "Compose"){
  Text(text = "Hello $name")
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun previewCompose(){
+    helloCompose("Compose")
 }
