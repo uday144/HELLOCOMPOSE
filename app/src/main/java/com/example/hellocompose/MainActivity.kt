@@ -3,6 +3,7 @@ package com.example.hellocompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -10,6 +11,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -35,12 +39,9 @@ fun helloCompose(name: String = "Compose") {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun previewCompose() {
-    Text(
-        text = "Hello Compose",
-        fontStyle = FontStyle.Italic,
-        fontWeight = FontWeight.ExtraBold,
-        color = Color.Blue,
-        fontSize = 36.sp,
-        textAlign = TextAlign.Right
+    Image(
+        painter = painterResource(id = R.drawable.heart), contentDescription = "Dummy image",
+        colorFilter = ColorFilter.tint(Color.Blue),
+        contentScale = ContentScale.Crop
     )
 }
